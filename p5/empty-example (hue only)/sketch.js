@@ -8,11 +8,7 @@ let canvasY = 720
 function setup() {
   //mic
   mic = new p5.AudioIn();
-  mic.start();
-  //frequency
-  fft = new p5.FFT();
-  fft.setInput(mic);
-  
+  mic.start();  
   //creating initial canvas
   createCanvas(canvasX, canvasY);
   colorMode(HSB, height, height, height);
@@ -25,15 +21,13 @@ function setup() {
 
 function draw() {
   let vol = mic.getLevel();
-  let freq = fft.analyze();
   let whichBar = period / barWidth;
   if (whichBar !== lastBar) {
     let barX = whichBar * barWidth;
-    
-    fill((freq[17]*4), height, (vol*20000));
+    fill((vol*20000), height, height);
     rect(barX, 0, barWidth, height);
     lastBar = whichBar;
-    document.getElementById("position").innerHTML = "Frequency Value: " + (freq[17]*4) + " Volume Value: " + (vol*20000);
+    document.getElementById("position").innerHTML = "Volume Value: " + (vol*20000);
     period++;
     if(period > canvasX){
       noLoop();
