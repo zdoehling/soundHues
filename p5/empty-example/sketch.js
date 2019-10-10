@@ -33,7 +33,7 @@ function draw() {
     fill((freq[17]*4), height, (vol*20000));
     rect(barX, 0, barWidth, height);
     lastBar = whichBar;
-    document.getElementById("position").innerHTML = "Frequency Value: " + (freq[17]*4) + " Volume Value: " + (vol*20000);
+    document.getElementById("position").innerHTML = "Frequency Value: " + (freq[17]*4) + " Volume Value: " + (vol*10000);
     period++;
     if(period > canvasX){
       noLoop();
